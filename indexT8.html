@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Product Dashboard</title>
+
+<style>
+body {
+  font-family: Arial;
+  margin: 20px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid #1095d3;
+  padding: 10px;
+  border-radius: 10px;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgb(5, 132, 196);
+}
+
+.card img {
+  height: 120px;
+  object-fit: contain;
+}
+
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#loader { font-weight: bold; }
+#error { color: red; }
+</style>
+
+</head>
+<body>
+
+<h2>🛒 Product Dashboard</h2>
+
+<div class="controls">
+  <input type="text" id="search" placeholder="Search product..." />
+  
+  <button onclick="sortLow()">Low → High</button>
+  <button onclick="sortHigh()">High → Low</button>
+
+  <select id="category" onchange="filterCategory()">
+    <option value="all">All</option>
+    <option value="electronics">Electronics</option>
+    <option value="jewelery">Jewelery</option>
+    <option value="men's clothing">Men</option>
+    <option value="women's clothing">Women</option>
+  </select>
+</div>
+
+<p id="loader">Loading...</p>
+<p id="error"></p>
+
+<div id="products"></div>
+
+<script src="./scriptT8.js"></script>
+
+</body>
+</html>
